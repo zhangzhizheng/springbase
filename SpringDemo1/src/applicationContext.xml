@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 通过一个<bean>标签设置类的信息,通过id属性为类起个标识. -->
+	<bean id="user" class="cn.SpringHello">
+	<!-- 依赖注入属性，还可以依赖注入ref,一个类 -->
+		<property name="info" value="河南"></property>
+	</bean>
+
+</beans>
