@@ -9,5 +9,12 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 	<!-- 依赖注入属性，还可以依赖注入ref,一个类 -->
 		<property name="info" value="河南"></property>
 	</bean>
-
+	<!-- Spring框架Bean的实例化的方式 -->
+	<!-- 默认的是无参的构造方法 -->
+	<bean id="bean1" class="cn.spring1.Bean1"></bean>
+	<!-- 第二种是使用静态工厂实例化,中的类是写静态工厂的类名 -->
+	<bean id="bean2" class="cn.spring1.Bean2Factory" factory-method="getBean2" ></bean>
+	<!-- 第三种是使用实例工厂实例化，由于工厂的getBean方法不是静态故要先实例化工厂 -->
+	<bean id="bean3" factory-bean="bean3factory" factory-method="getBean3"></bean>
+	<bean id="bean3factory" class="cn.spring1.Bean3Factory"></bean>
 </beans>
