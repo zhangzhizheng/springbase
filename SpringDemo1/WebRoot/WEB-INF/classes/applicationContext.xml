@@ -18,5 +18,5 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 	<bean id="bean3" factory-bean="bean3factory" factory-method="getBean3"></bean>
 	<bean id="bean3factory" class="cn.spring1.Bean3Factory"></bean>
 	<!-- 演示bean的作用域范围 -->
-	<bean id="customer" class="cn.spring2.Customer"></bean>
+	<bean id="customer" class="cn.spring2.Customer" scope="prototype"></bean>
 </beans>
