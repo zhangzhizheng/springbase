@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
-http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 	<!-- 为了不影响其他例子效果，进行注释 -->
 	<!-- 通过一个<bean>标签设置类的信息,通过id属性为类起个标识. -->
 	<bean id="user" class="cn.SpringHello">
@@ -25,4 +26,25 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 	</bean>
 	<!-- 这个类实现了BeanPostProcessor接口，不需要定义id的属性，由spring执行自动调用 -->
 	<bean class="cn.spring3.MyBeanProcessor"></bean>
+	<!-- bean的属性注入 -->
+	<!-- 构造器的属性注入 -->
+	<bean id="car" class="cn.spring4.Car" >
+	<!-- 通过name和value来注入 -->
+	<!-- <constructor-arg  name="name" value="奥迪"></constructor-arg>
+	<constructor-arg  name="price" value="20.5"></constructor-arg> -->
+	<!-- 通过index的注入 -->
+	<constructor-arg index="0" value="大众"></constructor-arg>
+	<constructor-arg index="1" value="6.5"></constructor-arg>
+	</bean>
+	<bean id="car2" class="cn.spring4.Car2" >
+	<property name="name" value="法拉利"></property>
+	<property name="price" value="1300"></property>
+	</bean>
+	<!-- 使用p命名空间，为了简化XML文件配置，Spring从2.5开始引入一个新的p名称空间 （和上面的结果一样） -->
+	<bean id="car3" class="cn.spring4.Car2" p:name="法拉利" p:price="13000.0"> </bean>
+	
+	<bean id="person" class="cn.spring4.Person">
+	<property name="name" value="张三"></property>
+	<property name="car2" ref="car2"></property>
+	</bean>
 </beans>
