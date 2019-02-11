@@ -3,3 +3,5 @@ Spring的入门
 Spring框架bean的实例化三种方式及其演示
 Spring的生命十一个周期
 spring中bean的属性注入
+spring和web的整合
+spring的junit的集成测试
