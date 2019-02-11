@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import cn.myservice.UserService;
 
@@ -32,8 +34,15 @@ public class UserServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext.xml");
-		UserService userService=(UserService) applicationContext.getBean("userService");
+		//ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext.xml");
+		/**
+		 * 因为Spring容器已经交由web容器初始化和管理
+                               获得WebApplicationContext对象，需要依赖ServletContext对象 
+	   	      通常在Servlet中完成
+		 */
+		//获得WebApplicationContext对象
+		WebApplicationContext webApplicationContext=WebApplicationContextUtils.getWebApplicationContext(getServletContext());
+		UserService userService=(UserService) webApplicationContext.getBean("userService");
 		userService.sayHello();
 	}
 
